@@ -17,16 +17,16 @@ public class Main {
         System.out.println("Задача 1");
         System.out.println("--------------------------------------------------------------------------------------------");
 
-        byte age1 = 35;
+        byte ageA = 35;
         // Выбрал byte потому, что возраст человека вроде как еще не превышал 127 лет. Если представить, что это верификатор возраста в приложении каршеринга,
         // то запросов с возрастом будет предостаточно, что оправдает экономию памяти. А так я везде int ставил бы, но рано или поздно меня заставят
         // оптимизировать код, так что полезно будет помнить про byte.
         // Во всем оставшемя коде я буду стараться подбирать тип переменных исходя из оптимизации, а этот комментарий - дисклеймер.
 
-        if (age1 >= 18) {
-            System.out.println("Если возраст человека равен " + age1 + ", то он совершеннолетний.");
+        if (ageA >= 18) {
+            System.out.println("Если возраст человека равен " + ageA + ", то он совершеннолетний.");
         } else {
-            System.out.println("Если возраст человека равен " + age1 + ", то он не достиг совершеннолетия, нужно немного подождать.");
+            System.out.println("Если возраст человека равен " + ageA + ", то он не достиг совершеннолетия, нужно немного подождать.");
         }
         System.out.println("--------------------------------------------------------------------------------------------");
 
@@ -78,35 +78,35 @@ public class Main {
 //                «Если возраст человека равен …, то ему нужно ходить … (в зависимости от возраста дописать нужное)».
         System.out.println("Задача 4");
         System.out.println("--------------------------------------------------------------------------------------------");
-        int age2 = 35;
-        boolean underAged = age2 < 2;
-        boolean cinderGarden = age2 > 2 && age2 < 6;
-        boolean schoolAge = age2 > 7 && age2 < 17;
-        boolean universityAge = age2 > 18 && age2 < 24;
-        boolean jobAge = age2 > 24 && age2 < 30;
-        boolean docAge = age2 > 31;
+        int age = 1;
+
+        boolean Garden = (age > 2) && (age <= 6);
+        boolean school = (age > 7) && (age <= 17);
+        boolean universityAge = (age > 18) && (age <= 24);
 
 
-        if (underAged) {
-            System.out.println("Если возраст человека равен " + age2 + ", то ему еще вообще не нужно ходить.");
+
+
+        if (age <= 2) {
+            System.out.println("Если возраст человека равен " + age + ", то ему еще вообще не нужно ходить.");
         }
 
-        if (cinderGarden) {
-            System.out.println("Если возраст человека равен " + age2 + ", то ему пора ходить в детский сад.");
+        else if (Garden) {
+            System.out.println("Если возраст человека равен " + age + ", то ему пора ходить в детский сад.");
         }
 
-        if (schoolAge) {
-            System.out.println("Если возраст человека равен " + age2 + ", то ему пора ходить в школу.");
+        else if (school) {
+            System.out.println("Если возраст человека равен " + age + ", то ему пора ходить в школу.");
         }
 
-        if (universityAge) {
-            System.out.println("Если возраст человека равен " + age2 + ", то его место в университете.");
+        else if (universityAge) {
+            System.out.println("Если возраст человека равен " + age + ", то его место в университете.");
         }
 
-        if (jobAge) {
-            System.out.println("Если возраст человека равен " + age2 + ", то ему пора ходить на работу.");
+        else if (age > 24) {
+            System.out.println("Если возраст человека равен " + age + ", то ему пора ходить на работу.");
         } else {
-            System.out.println("Если возраст человека больше " + age2 + ", то ему пора ходить и на работу и в поликлинику =).");
+            System.out.println("Что-то пошло не так и в коде ошибка!");
         }
         System.out.println("--------------------------------------------------------------------------------------------");
 
@@ -121,18 +121,19 @@ public class Main {
 
         System.out.println("Задача 5");
         System.out.println("--------------------------------------------------------------------------------------------");
-        byte age5 = 14;
-        boolean tooYoung = age5 < 5;
-        boolean withAdults = age5 > 5 && age5 < 14;
-        boolean noAdults = age5 > 14;
+        byte ageB = 7;
+
+        boolean tooYoung = ageB <= 5;
+        boolean withAdults = (ageB > 5) && (ageB <= 14);
+
 
         if (tooYoung) {
-            System.out.println("Если возраст ребенка равен " + age5 + ", то ему нельзя кататься на аттракционе");
+            System.out.println("Если возраст ребенка равен " + ageB + ", то ему нельзя кататься на аттракционе");
         }
-        if (withAdults) {
-            System.out.println("Если возраст ребенка равен " + age5 + ", то ему  можно кататься на аттракционе в сопровождении взрослого");
+        else if (withAdults) {
+            System.out.println("Если возраст ребенка равен " + ageB + ", то ему можно кататься на аттракционе в сопровождении взрослого");
         } else
-            System.out.println("Если возраст ребенка равен " + age5 + ", то ему можно кататься на аттракционе без сопровождения взрослого");
+            System.out.println("Если возраст ребенка равен " + ageB + ", то ему можно кататься на аттракционе без сопровождения взрослого");
 
         System.out.println("--------------------------------------------------------------------------------------------");
 
@@ -143,17 +144,43 @@ public class Main {
 //                сидячее или стоячее, или вагон уже полностью забит.
         System.out.println("Задача 6");
         System.out.println("--------------------------------------------------------------------------------------------");
-        byte passangers = 75;
-        boolean freeSeat = passangers < 60;
-        boolean standOnly = 60 < passangers && passangers < 102;
+        int seatPass = 12;
+        int standPass = 22;
 
-        if (freeSeat) {
-            System.out.println("В вагоне сейчас " + passangers + " человек, значит есть сидячие места.");
+        int carCapasity = 102;
+        int freeSeat = 60;
+        int freeStand = carCapasity - freeSeat ;
+
+        if (seatPass < freeSeat) {
+            System.out.println("В вагоне осталось "+(freeSeat - seatPass)+" свободных СИДЯЧИХ мест");
         }
-        if (standOnly) {
-            System.out.println("В вагоне сейчас " + passangers + " человек, значит есть только стоячие места.");
-        } else
-            System.out.println("В вагоне сейчас " + passangers + " человек, значит мест нет.");
+        else  {
+            System.out.println("В вагоне не осталось свободных СИДЯЧИХ мест");
+        }
+//        Если я правильно понимаю, то нам нужны две отдельные проверки для двух условий
+
+        if (standPass < freeStand) {
+            System.out.println("В вагоне осталось "+(freeStand - standPass)+" свободных СТОЯЧИХ мест");
+        }
+        else  {
+            System.out.println("В вагоне не осталось свободных СТОЯЧИХ мест");
+        }
+
+//        СТАРЫЙ КОД
+//        boolean freeSeat = pass < 60;
+//        boolean standOnly = (60 < pass) && (pass < 102);
+//
+//        if (freeSeat) {
+//            System.out.println("В вагоне сейчас " + pass + " человек, значит есть сидячие места.");
+//        }
+//        if (standOnly) {
+//            System.out.println("В вагоне сейчас " + pass + " человек, значит есть только стоячие места.");
+//        }
+//        if (standOnly) {
+//            System.out.println("В вагоне сейчас " + pass + " человек, значит есть только стоячие места.");
+//        }
+//        /СТАРЫЙ КОД
+        
 
         System.out.println("--------------------------------------------------------------------------------------------");
 //        Задача 7
@@ -168,23 +195,26 @@ public class Main {
 
         System.out.println("Задача 7");
         System.out.println("--------------------------------------------------------------------------------------------");
-        int one = 7;
+        int one = 1;
         int two = 2;
         int three = 3;
 
-        boolean oneIsBiggest = one > two && one > three;
-        boolean twoIsBiggest = two > one && two > three;
+        boolean oneIsBiggest = (one > two) && (one > three);
+        boolean twoIsBiggest = (two > one) && (two > three);
+        boolean threeIsBiggest = (three > one) && (three > two);
+
 
         if (oneIsBiggest) {
             System.out.println("Число один - наибольшее из всех.");
-        } else if (twoIsBiggest) {
+        }
+        if (twoIsBiggest) {
             System.out.println("Число два - наибольшее из всех.");
-        } else
+        }
+        if (threeIsBiggest) {
             System.out.println("Число три - наибольшее из всех.");
-
+        }
 
         System.out.println("--------------------------------------------------------------------------------------------");
-
 
 
     }
